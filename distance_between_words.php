@@ -7,7 +7,7 @@ echo "<br>Example 1:<br>";
 echo dist_btw_words($text1, $word1, $word2);
 
 //2
-$text2 = "Today is very good a sunny day and tomorrow will fdfdsfsd be very good day too.";
+$text2 = "Today is very good a sunny day and tomorrow will be very good day too.";
 $word3 = 'day';
 $word4 = 'Today';
 echo "<br><br>Example 2:<br>";
@@ -48,6 +48,4 @@ function dist_btw_words($text, $word1, $word2) {
 	}
 	return "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist";
 }
-
-
 ?>
