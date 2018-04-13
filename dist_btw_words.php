@@ -7,16 +7,16 @@ echo "<br>Example 1:<br>";
 echo dist_btw_words($text1, $word1, $word2);
 
 //2
-$text2 = "Today is very good a sunny day and tomorrow will be very good day too";
+$text2 = "Today is very good fdsfsd a sunny day and tomorrow will be very good day too";
 $word3 = 'day';
 $word4 = 'Today';
 echo "<br><br>Example 2:<br>";
 echo dist_btw_words($text2, $word3, $word4);
 
 function dist_btw_words($text, $word1, $word2) {
+	$test_start = microtime(true);
 	//Сформируем из текста массив слов с помощью функции str_word_count()
 	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789");
-	echo '<br>';
 	if (in_array($word1, $words) || in_array($word2, $words)) {
 		if (in_array($word1, $words)) $keys_w1 = array_keys($words, $word1); #массив ключей первого слова
 			else return "Слово $word1 в тексте не найдено";
@@ -47,10 +47,10 @@ function dist_btw_words($text, $word1, $word2) {
 	}
 	//Расчёт максимальной дистанции между словами
 	//Минимальные и максимальные позиции искомых слов в тексте
-	$min_pos_w1 = min($keys_w1);
-	$max_pos_w1 = max($keys_w1);
-	$min_pos_w2 = min($keys_w2);
-	$max_pos_w2 = max($keys_w2);
+	$min_pos_w1 = $keys_w1[0];
+	$max_pos_w1 = $last_position_w1;
+	$min_pos_w2 = $keys_w2[0];
+	$max_pos_w2 = $last_position_w2;
 
 	if ($max_pos_w1 > $max_pos_w2) {
 		$max_pos = $max_pos_w1;
@@ -60,7 +60,8 @@ function dist_btw_words($text, $word1, $word2) {
 		$min_pos = $min_pos_w1;
 	}
 	$max_dist = $max_pos - $min_pos - 1; #максимальная дистанция
-	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist";
+	$test_end = (microtime(true) - $test_start)*100000;
+	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist <br> $test_end";
 	return $response;
 }	
 
