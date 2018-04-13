@@ -23,13 +23,8 @@ function dist_btw_words($text, $word1, $word2) {
 		if (in_array($word2, $words)) $keys_w2 = array_keys($words, $word2); #массив ключей второго слова
 			else return "Слово $word2 в тексте не найдено";
 	} else return "Ниодно из слов в тексте не найдено";
-	//Минимальные и максимальные позиции слов в тексте
-	$min_pos_w1 = min($keys_w1);
-	$max_pos_w1 = max($keys_w1);
-	$min_pos_w2 = min($keys_w2);
-	$max_pos_w2 = max($keys_w2);
 
-	//Расчёт минимальной и максимальной дистанции между словами
+	//Расчёт минимальной дистанции между словами
 	$last_position_w1 = -1; 
 	$last_position_w2 = -1; 
 	$min_dist = PHP_INT_MAX;
@@ -50,6 +45,13 @@ function dist_btw_words($text, $word1, $word2) {
 			} 
 		}
 	}
+	//Расчёт максимальной дистанции между словами
+	//Минимальные и максимальные позиции искомых слов в тексте
+	$min_pos_w1 = min($keys_w1);
+	$max_pos_w1 = max($keys_w1);
+	$min_pos_w2 = min($keys_w2);
+	$max_pos_w2 = max($keys_w2);
+
 	if ($max_pos_w1 > $max_pos_w2) {
 		$max_pos = $max_pos_w1;
 		$min_pos = $min_pos_w2;
