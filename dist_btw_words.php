@@ -17,7 +17,7 @@ function dist_btw_words($text, $word1, $word2) {
 	//Сформируем из текста массив слов с помощью функции str_word_count()
 	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789");
 	echo '<br>';
-	if (in_array($word1, $words) && in_array($word2, $words)) {
+	if (in_array($word1, $words) || in_array($word2, $words)) {
 		if (in_array($word1, $words)) $keys_w1 = array_keys($words, $word1); #массив ключей первого слова
 			else return "Слово $word1 в тексте не найдено";
 		if (in_array($word2, $words)) $keys_w2 = array_keys($words, $word2); #массив ключей второго слова
