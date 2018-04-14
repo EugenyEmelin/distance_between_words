@@ -60,7 +60,7 @@ function dist_btw_words($text, $word1, $word2) {
 		$min_pos = $min_pos_w1;
 	}
 	$max_dist = $max_pos - $min_pos - 1; #максимальная дистанция
-	$test_end = (microtime(true) - $test_start);
+	$test_end = (microtime(true) - $test_start)*100000;
 	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist <br> $test_end";
 	return $response;
 }	
