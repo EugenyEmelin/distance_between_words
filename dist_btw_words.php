@@ -1,8 +1,8 @@
 <?php
 //1
-$text1 = "the S 1 1 1 the simple 123 one words 5 5 two words 6 324 6 the three five 5 6 words"; 
-$word1 = 'words';
-$word2 = 'the';
+$text1 = "The TagAwareAdapter class implements instantaneous invalidation (time complexity is O(N) where N is the number of invalidated tags). It needs one or two cache adapters: the first required one is used to store cached items; the second optional one is used to store tags and their invalidation version number (conceptually similar to their latest invalidation date). When only one adapter is used, items and tags are all stored in the same place. By using two adapters, you can e.g. store some big cached items on the filesystem or in the database and keep tags in a Redis database to sync all your fronts and have very fast invalidation checksThe TagAwareAdapter class implements instantaneous invalidation (time complexity is O(N) where N is the number of invalidated tags). It needs one or two cache adapters: the first required one is used to store cached items; the second optional one is used to store tags and their invalidation version number (conceptually similar to their latest invalidation date). When only one adapter is used, items and tags are all stored in the same place. By using two adapters, you can e.g. store some big cached items on the filesystem or in the database and keep tags in a Redis database"; 
+$word1 = 'invalidation';
+$word2 = 'items';
 echo "<br>Example 1:<br>";
 echo dist_btw_words($text1, $word1, $word2);
 
@@ -16,7 +16,7 @@ echo dist_btw_words($text2, $word3, $word4);
 function dist_btw_words($text, $word1, $word2) {
 	$test_start = microtime(true);
 	//Сформируем из текста массив слов с помощью функции str_word_count()
-	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789");
+	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789()-=+/.,'&*#@!%^:;|><~`");
 	if (in_array($word1, $words) || in_array($word2, $words)) {
 		if (in_array($word1, $words)) $keys_w1 = array_keys($words, $word1); #массив ключей первого слова
 			else return "Слово $word1 в тексте не найдено";
@@ -60,7 +60,7 @@ function dist_btw_words($text, $word1, $word2) {
 		$min_pos = $min_pos_w1;
 	}
 	$max_dist = $max_pos - $min_pos - 1; #максимальная дистанция
-	$test_end = (microtime(true) - $test_start)*100000;
+	$test_end = (microtime(true) - $test_start);
 	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist <br> $test_end";
 	return $response;
 }	
