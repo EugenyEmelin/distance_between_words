@@ -16,7 +16,7 @@ echo dist_btw_words($text2, $word3, $word4);
 function dist_btw_words($text, $word1, $word2) {
 	$test_start = microtime(true);
 	//Сформируем из текста массив слов с помощью функции str_word_count()
-	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789()-=+/.,'&*#@!%^:;|><~`");
+	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789()-=+/.,'&*#@$!%^:;?|><~`{}[]/\"\\№");
 	if (in_array($word1, $words) || in_array($word2, $words)) {
 		if (in_array($word1, $words)) $keys_w1 = array_keys($words, $word1); #массив ключей первого слова
 			else return "Слово $word1 в тексте не найдено";
