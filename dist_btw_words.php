@@ -1,20 +1,19 @@
 <?php
 //1
-$text1 = "the 1 1 1 the simple one words 5 5 the two words 6 6 the three five 5 6 words the"; 
+$text1 = "the 1 1 1 the simple one words 5 5 the two words 6 6 the three five 5 6 words"; 
 $word1 = 'words';
 $word2 = 'the';
 echo "<br>Example 1:<br>";
 echo dist_btw_words($text1, $word1, $word2);
 
 //2
-$text2 = "day fdsf dsfsdf dd is very good a sunny and tomorrow will be very good too Today dfsf day fsd Today";
+$text2 = "day  ывыфв fdsf dsfsdf dd is very good a sunny and tomorrow will be very good too Today dfsf day fsd Today";
 $word3 = 'day';
 $word4 = 'Today';
 echo "<br><br>Example 2:<br>";
 echo dist_btw_words($text2, $word3, $word4);
 
 function dist_btw_words($text, $word1, $word2) {
-	$test_start = microtime(true);
 	//Сформируем из текста массив слов с помощью функции str_word_count()
 	$words = str_word_count($text, 1, "АаБбВвГгДдЕеЁёЖжЗзИиЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЪъЫыЬьЭэЮюЯя123456789()-=+/.,'&*#@$!%^:;?|><~`{}[]/\"\\№");
 	if (in_array($word1, $words) || in_array($word2, $words)) {
@@ -55,8 +54,7 @@ function dist_btw_words($text, $word1, $word2) {
 	$max_dist_w2w1 = abs($max_pos_w2 - $min_pos_w1) - 1; #максимальное расстояние между первым индексом word1 и последним word2
 	$max_dist = $max_dist_w1w2 > $max_dist_w2w1 ? $max_dist_w1w2 : $max_dist_w2w1; #большее из этих расстояний и является максимальным расстоянием между словами
 
-	$test_end = (microtime(true) - $test_start)*100000;
-	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist <br> $test_end <br>";
+	$response = "Минимальное расстояние: $min_dist <br> Максимальное расстояние: $max_dist";
 	return $response;
 }	
 
